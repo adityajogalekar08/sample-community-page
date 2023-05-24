@@ -24,6 +24,10 @@ try:
 except:
     print('Failed to connect to MongoDB')
 
+"""
+Api-endpoint to retrieve users from DB to Front-End UI
+"""
+
 @app.route("/get-users", methods=['GET'])
 def get_users():
     print("dbcollections",dbcollections)
