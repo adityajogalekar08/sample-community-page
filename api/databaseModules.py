@@ -2,9 +2,13 @@ from dotenv import load_dotenv
 from pymongo import MongoClient
 import os
 import pandas as pd
+from bson import ObjectId
+from faker import Faker
+from PIL import Image
+
+folder_path = './img/' 
+column_name = 'Profile_pic'
 load_dotenv()
-
-
 try:
     dbclient =  MongoClient(os.getenv("MONGODB_URI"), int(os.getenv("PORT")))
     db = dbclient[os.getenv("DB_NAME")]
@@ -31,14 +35,21 @@ def create_users():
     profile pic: image
     interests: str
     """ 
-    user_data = pd.read_excel("users.xlsx", index_col=False) 
+    user_data = pd.read_excel("users.xlsx", index_col=False)
+    image_files = os.listdir(folder_path)
+    image_files.sort()
+    for index,data in user_data.iterrows():
+        user_id = ObjectId()
+        user_data.at[index,"user_id"] = str(user_id)
+    
+    user_data['Profile_Pic'] = [os.path.join(folder_path, img) for img in image_files]
+    user_data = user_data.to_dict('records')
     insert_into_db(user_data)
     #print(user_data)
 
 def insert_into_db(users_data):
-    records = users_data.to_dict(orient="records")
     collection = dbcollections
-    collection.insert_many(records)
+    collection.insert_many(users_data)
     print(collection)
 
 def main():

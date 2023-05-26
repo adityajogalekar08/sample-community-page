@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 0.5fr 1.5fr;
   grid-template-rows: 0.2fr 1.7fr 0.1fr;
-  gap: 0.5% 0.5%;
+
   grid-auto-flow: row;
   grid-template-areas: 'header header' 'userList users';
   overflow-x: hidden;
@@ -13,20 +13,58 @@
 
 .header {
   grid-area: header;
-  background-color: aquamarine;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
+  height: 100%;
+  background-color: #03a9f4;
+  align-items: center;
+  font-size: large !important;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 2rem !important;
+  color: white !important;
+  border-bottom: 3px solid white;
 }
 
 .users {
   grid-area: users;
-  max-width: 95%;
+  max-width: 100%;
+  width: 99%;
+  background-color: #011428 !important;
+  display: block;
+  color: white !important;
 }
 
 .userList {
+  display: flex;
+  max-width: 100%;
+  width: 100%;
   grid-area: userList;
-
-  overflow-y: scroll;
+  overflow-x: scroll;
 }
 
+.n1,
+.n2,
+.n3 {
+  font-family: 'Courier New', Courier, monospace;
+}
+.n1 {
+  color: #ff0000;
+}
+.n2 {
+  color: orchid;
+}
+.n3 {
+  color: green;
+}
+.naruto-com-button {
+  background-color: grey !important;
+  font-weight: bold !important;
+  text-decoration: none;
+  color: black !important;
+  width: 25%;
+}
 /* all the css related to AdminBoard.js 
 .cardContent {
   
@@ -49,4 +87,69 @@
   font-weight: bold !important;
   text-decoration: none;
   color: black !important;
+}
+/* community page css*/
+.community-container {
+  min-height: 100vh;
+  min-width: 0vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+  grid-template-rows: 0.2fr 1.7fr 0.1fr;
+  gap: 0.5% 0.5%;
+  grid-auto-flow: row;
+  grid-template-areas: 'community-header community-header' 'community-userList community-users';
+  overflow-x: hidden;
+}
+
+.community-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: community-header;
+  max-height: 100%;
+  height: 100%;
+  background-color: aquamarine;
+  align-items: center;
+}
+
+.community-users {
+  grid-area: community-users;
+  max-width: 95%;
+}
+
+.community-userList {
+  grid-area: community-userList;
+
+  overflow-y: scroll;
+}
+.home-button {
+  display: flex;
+  justify-content: center;
+  color: green !important;
+  font-size: 1.2rem !important;
+  width: 20%;
+
+  font-weight: bold !important;
+  text-decoration: none;
+}
+.add-users- {
+  color: green !important;
+  font-size: 1.2rem !important;
+}
+.delete-users- {
+  color: red !important;
+  font-size: 1.2rem !important;
+}
+.image {
+  width: 200px;
+  height: auto; /* Adjust as per your requirements */
+}
+
+.home-content {
+  padding-left: 02%;
+}
+.add-user-nav {
+  width: 100%;
+  max-width: 100%;
 }
