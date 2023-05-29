@@ -36,14 +36,25 @@ Api-endpoint to retrieve users from DB to Front-End UI
 def get_users():
     print("dbcollections",dbcollections)
     userCollection = db[dbcollections]
-    
+    Usercommunity = db[db_community_collection]
     userRecords = list(userCollection.find({}, {'_id': 0}))
-    
+    #print(userRecords)
+    final_data = []
+    #print("Usercommunity:",Usercommunity)
+    for user in userRecords:
+        
+        user_id = user["user_id"]
+        existingUser = Usercommunity.find_one({"user_id":user_id})
+        
+        if not existingUser:
+            final_data.append(user)
+    #print("final_data:",final_data)
     #response = json.dumps(userRecords)
     #response.headers.add('Access-Control-Allow-Origin', '*')
     #for i in userRecords:
     #    print("userdata:",i)
-    return{"userData":json.loads(dumps(userRecords))}
+    
+    return{"userData":json.loads(dumps(final_data))}
 
 
 
