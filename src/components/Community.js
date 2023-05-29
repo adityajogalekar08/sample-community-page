@@ -45,7 +45,7 @@ export default function Community() {
     };
     fetchUsers();
     console.log('users_length:', communityusers);
-  });
+  }, []);
   /* function to handle delete users */
   useEffect(() => {
     const count = checkUsers.length;
